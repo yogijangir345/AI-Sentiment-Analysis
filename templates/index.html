@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Sentiment Analysis</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="hero">
+
+            <h1>🤖 AI Sentiment Analysis</h1>
+
+            <p class="subtitle">
+                Analyze the sentiment of any text instantly using Artificial Intelligence.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <form action="/predict" method="POST">
+
+                <label class="input-label">
+                    Enter Your Text
+                </label>
+
+                <textarea
+                    name="text"
+                    placeholder="Type or paste your text here..."
+                    required>{{ request.form.get('text','') }}</textarea>
+
+                <button type="submit">
+                    🔍 Analyze Sentiment
+                </button>
+
+            </form>
+
+            {% if prediction %}
+
+            <div class="result-box">
+
+                <h2>Prediction Result</h2>
+
+                <div class="prediction">
+                    {{ prediction }}
+                </div>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+<footer>
+    <p>Designed & Developed by <strong>Yogesh</strong> | Internship Project 2026</p>
+</footer>
+
+    </div>
+
+</body>
+
+</html>
